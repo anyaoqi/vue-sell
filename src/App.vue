@@ -12,19 +12,30 @@
           <router-link to="/seller" >商家</router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
+    
 
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import { urlParse } from 'common/js/util';
 import header from "./components/header/header";
 
 export default {
   name: 'App',
   data(){
     return {
-      seller: {}
+      seller: {
+        id:(()=>{
+          let queryParam = urlParse();
+          console.log(queryParam)
+          return queryParam.id
+        })()
+      }
     }
   },
   components:{
@@ -32,10 +43,12 @@ export default {
   },
   created(){
     this.$axios
-          .get('/api/seller')
+          .get('/api/seller?id='+this.seller.id)
           .then( response => {
               console.log(response.data)
-              this.seller = response.data.data;
+              // this.seller = response.data.data;
+              this.seller = Object.assign({},this.seller,response.data.data)
+            console.log(this.seller.id)
           } )
   },
   methods:{

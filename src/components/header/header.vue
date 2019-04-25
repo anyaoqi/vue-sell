@@ -81,7 +81,7 @@ import star from "components/star/star";
         data(){
             return {
                 classMap:['decrease','discount','guarantee','invoice','special'],
-                detailShow:true
+                detailShow:false
             }
         },
         created(){

@@ -13,6 +13,7 @@ const portfinder = require('portfinder')
 //第一步
 const express = require('express')
 const app = express()//请求server
+
 var appData = require('../data.json')//加载本地数据文件
 var seller = appData.seller//获取对应的本地数据
 var goods = appData.goods

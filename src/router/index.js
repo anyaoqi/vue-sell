@@ -8,7 +8,7 @@ import seller from "components/seller/seller";
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',  // 去掉#号,
+  // mode: 'history',  // 去掉#号,
   linkActiveClass:'active',
   routes: [
     { path: '/', redirect: 'goods' },
