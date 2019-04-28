@@ -24,9 +24,9 @@
                     name="drop"
                     v-on:before-enter="ball_beforeEnter"
                     v-on:enter="ball_enter"
-                    v-on:after-enter="ball_afterEnter"
-                >   
-                    <div  v-for="(ball,index) in balls" v-show="ball.show" class="ball" :key="index">
+                    v-on:after-enter="ball_afterEnter" 
+                     v-for="(ball,index) in balls" :key="index"  >   
+                    <div  class="ball"   v-show="ball.show" :key="index"  >
                         <div class="inner inner-hook"></div>
                     </div>
                 </transition-group>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="list-content" ref="listContent">
                         <ul>
-                            <li class="food" v-for="food in selectFoods">
+                            <li class="food" v-for="(food,index) in selectFoods" :key="index">
                                 <span class="name">{{food.name}}</span>
                                 <div class="price">
                                     <span>￥{{food.price*food.count}}</span>
@@ -401,12 +401,5 @@ export default {
         &.fade-enter, &.fade-leave-to
             opacity 0
             background rgba(7,17,27,0)
-
-                  
-                   
-
-
-
-
 
 </style>
